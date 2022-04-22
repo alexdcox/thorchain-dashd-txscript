@@ -15,9 +15,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/alexdcox/dashd-go/chaincfg/chainhash"
-	"github.com/alexdcox/dashd-go/wire"
-	"github.com/alexdcox/dashutil"
+	"github.com/dashevo/dashd-go/chaincfg/chainhash"
+	"github.com/dashevo/dashd-go/wire"
+	dashutil "github.com/dashevo/dashd-go/btcutil"
 )
 
 // scriptTestName returns a descriptive test name for the given reference script

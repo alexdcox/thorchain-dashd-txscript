@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/alexdcox/dashd-go/wire"
+	"github.com/dashevo/dashd-go/wire"
 )
 
 // TestParsePkScript ensures that the supported script types can be parsed

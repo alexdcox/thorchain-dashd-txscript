@@ -1,6 +1,6 @@
 package txscript
 
-import "github.com/alexdcox/dashd-go/btcec"
+import "github.com/btcsuite/btcd/btcec"
 
 type PrivateKeySignable struct {
 	privateKey *btcec.PrivateKey

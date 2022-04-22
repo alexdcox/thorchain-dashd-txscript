@@ -8,10 +8,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/alexdcox/dashd-go/btcec"
-	"github.com/alexdcox/dashd-go/chaincfg"
-	"github.com/alexdcox/dashd-go/wire"
-	"github.com/alexdcox/dashutil"
+	"github.com/btcsuite/btcd/btcec"
+	dashutil "github.com/dashevo/dashd-go/btcutil"
+	"github.com/dashevo/dashd-go/chaincfg"
+	"github.com/dashevo/dashd-go/wire"
 )
 
 // RawTxInWitnessSignature returns the serialized ECDA signature for the input
@@ -356,10 +356,12 @@ sigLoop:
 
 			pubKey := pkaddr.PubKey()
 
+			pubKeyV1, _ := btcec.ParsePubKey(pubKey.SerializeCompressed(), btcec.S256())
+
 			// If it matches we put it in the map. We only
 			// can take one signature per public key so if we
 			// already have one, we can throw this away.
-			if pSig.Verify(hash, pubKey) {
+			if pSig.Verify(hash, pubKeyV1) {
 				aStr := addr.EncodeAddress()
 				if _, ok := addrToSig[aStr]; !ok {
 					addrToSig[aStr] = sig

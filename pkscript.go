@@ -5,10 +5,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/alexdcox/dashd-go/btcec"
-	"github.com/alexdcox/dashd-go/chaincfg"
-	"github.com/alexdcox/dashd-go/wire"
-	"github.com/alexdcox/dashutil"
+	"github.com/btcsuite/btcd/btcec"
+	"github.com/dashevo/dashd-go/chaincfg"
+	"github.com/dashevo/dashd-go/wire"
+	dashutil "github.com/dashevo/dashd-go/btcutil"
 	"golang.org/x/crypto/ripemd160"
 )
 

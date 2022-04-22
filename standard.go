@@ -7,9 +7,9 @@ package txscript
 import (
 	"fmt"
 
-	"github.com/alexdcox/dashd-go/chaincfg"
-	"github.com/alexdcox/dashd-go/wire"
-	"github.com/alexdcox/dashutil"
+	dashutil "github.com/dashevo/dashd-go/btcutil"
+	"github.com/dashevo/dashd-go/chaincfg"
+	"github.com/dashevo/dashd-go/wire"
 )
 
 const (

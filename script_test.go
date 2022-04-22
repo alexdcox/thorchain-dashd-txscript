@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/alexdcox/dashd-go/wire"
+	"github.com/dashevo/dashd-go/wire"
 )
 
 // TestParseOpcode tests for opcode parsing with bad data templates.

@@ -8,12 +8,13 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/alexdcox/dashd-go/btcec"
-	"github.com/alexdcox/dashd-go/chaincfg"
-	"github.com/alexdcox/dashd-go/chaincfg/chainhash"
-	"github.com/alexdcox/dashd-go/txscript"
-	"github.com/alexdcox/dashd-go/wire"
-	"github.com/alexdcox/dashutil"
+	"github.com/btcsuite/btcd/btcec"
+	"github.com/dashevo/dashd-go/chaincfg"
+	"github.com/dashevo/dashd-go/chaincfg/chainhash"
+	"github.com/dashevo/dashd-go/txscript"
+	"github.com/dashevo/dashd-go/wire"
+	dashec "github.com/dashevo/dashd-go/btcec/v2"
+	dashutil "github.com/dashevo/dashd-go/btcutil"
 )
 
 // This example demonstrates creating a script which pays to a dash address.
@@ -130,7 +131,7 @@ func ExampleSignTxOutput() {
 	redeemTx.AddTxOut(txOut)
 
 	// Sign the redeeming transaction.
-	lookupKey := func(a dashutil.Address) (*btcec.PrivateKey, bool, error) {
+	lookupKey := func(a dashutil.Address) (*dashec.PrivateKey, bool, error) {
 		// Ordinarily this function would involve looking up the private
 		// key for the provided address, but since the only thing being
 		// signed in this example uses the address associated with the
@@ -146,7 +147,8 @@ func ExampleSignTxOutput() {
 		//
 		// privKey.D.SetInt64(12345)
 		//
-		return privKey, true, nil
+		privKeyV2, _ := dashec.PrivKeyFromBytes(privKey.Serialize())
+		return privKeyV2, true, nil
 	}
 	// Notice that the script database parameter is nil here since it isn't
 	// used.  It must be specified when pay-to-script-hash transactions are
